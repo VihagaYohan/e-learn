@@ -17,9 +17,9 @@ const UICard = ({ title, description }: propTypes) => {
     <Card
       sx={{
         bgcolor: "white",
-        border: 1,
+        //border: 1,
       }}
-      elevation={0}
+      elevation={2}
     >
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
