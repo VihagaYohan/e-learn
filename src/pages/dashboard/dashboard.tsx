@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Grid, Container } from "@mui/material";
 
 // components
-import { UIAppbar, UICard, UIPieChart } from "../../components";
+import { UIAppbar, UICard, UIPieChart, UITable } from "../../components";
 
 // utils
 import { Constants } from "../../utils";
@@ -27,7 +27,9 @@ const DashboardPage = () => {
           );
         })}
 
-        <Grid item xs={12} md={7}></Grid>
+        <Grid item xs={12} md={7}>
+          <UITable />
+        </Grid>
 
         <Grid item xs={12} md={5}>
           <UIPieChart />
