@@ -15,12 +15,10 @@ import { FaQuestion } from "react-icons/fa";
 import { BsFillCalendar3EventFill } from "react-icons/bs";
 import { FaBook } from "react-icons/fa";
 
-interface menuItem {
-  label: string;
-  icon: JSX.Element;
-}
+// models
+import { MenuItem } from "../../models/index";
 
-const menuItems: menuItem[] = [
+const menuItems: MenuItem[] = [
   {
     label: "Home",
     icon: <AiFillHome />,
