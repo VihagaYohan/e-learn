@@ -14,6 +14,7 @@ import { FaUserGraduate } from "react-icons/fa";
 import { FaQuestion } from "react-icons/fa";
 import { BsFillCalendar3EventFill } from "react-icons/bs";
 import { FaBook } from "react-icons/fa";
+import { useNavigation, Link } from "react-router-dom";
 
 // models
 import { MenuItem } from "../../models/index";
@@ -26,6 +27,7 @@ const menuItems: MenuItem[] = [
   {
     label: "Teachers",
     icon: <FaChalkboardTeacher />,
+    route: "/teachers",
   },
   {
     label: "Students",
@@ -46,10 +48,11 @@ const menuItems: MenuItem[] = [
 ];
 
 const UIAdminMenu = () => {
+  const navigation = useNavigation();
   return (
     <List>
-      {menuItems.map(({ label, icon }, index) => (
-        <ListItem key={label} disablePadding>
+      {menuItems.map(({ label, icon, route = "/" }, index) => (
+        <ListItem key={label} disablePadding component={Link} to={route}>
           <ListItemButton>
             <ListItemIcon>{icon}</ListItemIcon>
             <ListItemText primary={label} />
