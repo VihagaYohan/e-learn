@@ -1,0 +1,49 @@
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchCourseDetails } from './courseService';
+
+const CourseDetails = () => {
+  const { courseId } = useParams();
+  const [courseDetails, setCourseDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadCourseDetails = async () => {
+      const details = await fetchCourseDetails(courseId);
+      setCourseDetails(details);
+      setLoading(false);
+    };
+
+    loadCourseDetails();
+  }, [courseId]);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (!courseDetails) {
+    return <p>Course not found</p>;
+  }
+
+  return (
+    <div className="course-details">
+      <h1>{courseDetails.name}</h1>
+      <p>{courseDetails.description}</p>
+      
+      <h2>Modules</h2>
+      <ul>
+        {courseDetails.modules && courseDetails.modules.map((module, index) => (
+          <li key={index}>{module.name}</li>
+        ))}
+      </ul>
+      
+      <h2>Instructor</h2>
+      <p>{courseDetails.instructor}</p>
+      
+      <h2>Schedule</h2>
+      <p>{courseDetails.schedule}</p>
+    </div>
+  );
+};
+
+export default CourseDetails;
